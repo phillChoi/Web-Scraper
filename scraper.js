@@ -1,17 +1,25 @@
 const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+const randomUseragent = require('random-useragent');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const AdBlockerPlugin = require('puppeteer-extra-plugin-adblocker');
 puppeteer.use(StealthPlugin());
+puppeteer.use(AdBlockerPlugin({ blockTrackers: true}));
 
-puppeteer.launch({ headless: true }).then(async browser => {
+async function scrape(){
     console.log('Running tests..')
-    const page = await browser.newPage()
-    await page.goto('https://twist.moe/a/one-punch-man/1')
-    await page.waitForTimeout(5000)
-    await page.screenshot({ path: 'testresult.png', fullPage: true })
+    const browser = await puppeteer.launch({headless:true});
+    const page = await browser.newPage();
+    await page.setViewport({ width: 800, height: 600 })
+    await page.goto('https://www1.gogoanime.ai/one-piece-episode-900');
+    const [e1] = await page.$x('//*[@id="wrapper_bg"]/section/section[1]/div[1]/div[1]/div[1]/h2');
+    const src = e1.getProperty('textContent');
+    console.log(src);
+    await page.waitForTimeout(5000);
+    await page.screenshot({ path: 'testresult.png', fullPage: true });
     await browser.close()
-    console.log(`All done, check the screenshot. ✨`)
-  })
-
+    console.log(`All done, check the screenshot. ✨`);
+  };
+  scrape();
 
 /*
 async function scrapeVideo(url){
