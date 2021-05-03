@@ -55,25 +55,33 @@ async function getEpisodeDetails(array){
     /* try { */
         const browser = await puppeteer.launch({headless:true});
         const page = await browser.newPage();
-        episodeDetails = [];
+        const functionResults =[];
         
-        for (x = 0; x<array.length;x++){
-            let link = array[x];
-            await page.goto(link.epSource);
-            await page.waitForTimeout(1000);
-            //console.log("Now at: "+link.epSource);
-            let title = page.querySelector('.series-title > span').innerHTML.trim();
-            let episode = page.querySelector('.series-episode > span').innerHTML;;
-            let vidSrc = page.querySelector('video').getAttribute('src');
-            episodeDetails.push({
-                AnimeTitle: title,
-                Episode: episode,
-                Source: vidSrc,
-            });
-        };
+        //const results = await page.evaluate(() => {
+            for (x = 0; x<array.length;x++){
+                let link = array[x];
+                await page.goto(link.epSource);
+                await page.waitForTimeout(5000);
+                console.log("Now at: "+link.epSource);
+                const results = await page.evaluate(()=>{
+                    episodeDetails = [];
+                    let title = document.querySelector('.series-title > span').innerHTML.trim();
+                    let episode = document.querySelector('.series-episode > span').innerHTML;;
+                    let vidSrc = document.querySelector('video').getAttribute('src');
+                    episodeDetails.push({
+                        AnimeTitle: title,
+                        Episode: episode,
+                        Source: vidSrc,
+                    });  
+                    return episodeDetails;
+                });
+                functionResults.push(results);
+            };
+        //})
+        
         await browser.close();
         console.log("Finished iterating through pages.");
-        console.log(episodeDetails);
+        console.log(functionResults);
         /* 
         let title = document.querySelector('.series-title > span').innerHTML.trim();
         let episode = document.querySelector('.series-episode > span').innerHTML;;
