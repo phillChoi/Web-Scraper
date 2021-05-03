@@ -52,12 +52,11 @@ async function getEpisodeList() {
 };
 
 async function getEpisodeDetails(array){
-    /* try { */
+    try { 
         const browser = await puppeteer.launch({headless:true});
         const page = await browser.newPage();
-        const functionResults =[];
-        
-        //const results = await page.evaluate(() => {
+        const finalResult =[];
+            //Iterate through the list of links -- does not work with forEach loop
             for (x = 0; x<array.length;x++){
                 let link = array[x];
                 await page.goto(link.epSource);
@@ -75,29 +74,17 @@ async function getEpisodeDetails(array){
                     });  
                     return episodeDetails;
                 });
-                functionResults.push(results);
+                finalResult.push(results);
             };
-        //})
         
         await browser.close();
+        console.log(finalResult);
         console.log("Finished iterating through pages.");
-        console.log(functionResults);
-        /* 
-        let title = document.querySelector('.series-title > span').innerHTML.trim();
-        let episode = document.querySelector('.series-episode > span').innerHTML;;
-        let vidSrc = document.querySelector('video').getAttribute('src');
-
-        
-        episodeDetails.push({
-            AnimeTitle: title,
-            Episode: episode,
-            Source: vidSrc,
-        });
-        return episodeDetails; */
-    /* } catch (err){
-        console.log(err); 
-    }*/
+    } catch(err){
+        console.log(err);
+    }
 };
+
 let episodeArray = [
     { epSource: 'https://twist.moe/a/one-punch-man/1', epNo: '1' },
     { epSource: 'https://twist.moe/a/one-punch-man/2', epNo: '2' },
