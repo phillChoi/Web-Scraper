@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer-extra');
+const fs = require('fs');
+const { PerformanceObserver, performance } = require('perf_hooks');
 //const randomUseragent = require('random-useragent');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const AdBlockerPlugin = require('puppeteer-extra-plugin-adblocker');
@@ -45,7 +47,8 @@ async function getEpisodeList() {
         });
         await browser.close();
         console.log(vidSource);
-        return vidSource;
+        //return vidSource;
+        getEpisodeDetails(vidSource);
     } catch(err){
         console.log(err);
     } 
@@ -80,6 +83,15 @@ async function getEpisodeDetails(array){
         await browser.close();
         console.log(finalResult);
         console.log("Finished iterating through pages.");
+
+        //Write File into JSON
+        let data = JSON.stringify(finalResult, null, 2);
+        fs.writeFileSync('./output/episodes.json', data);
+
+        //Measuring runtime of script
+        var t1 = performance.now()
+        console.log("Script took " + ((t1 - t0)/1000).toFixed(2) + " seconds to execute.")
+        
     } catch(err){
         console.log(err);
     }
@@ -88,16 +100,9 @@ async function getEpisodeDetails(array){
 let episodeArray = [
     { epSource: 'https://twist.moe/a/one-punch-man/1', epNo: '1' },
     { epSource: 'https://twist.moe/a/one-punch-man/2', epNo: '2' },
-    { epSource: 'https://twist.moe/a/one-punch-man/3', epNo: '3' },
-    { epSource: 'https://twist.moe/a/one-punch-man/4', epNo: '4' },
-    { epSource: 'https://twist.moe/a/one-punch-man/5', epNo: '5' },
-    { epSource: 'https://twist.moe/a/one-punch-man/6', epNo: '6' },
-    { epSource: 'https://twist.moe/a/one-punch-man/7', epNo: '7' },
-    { epSource: 'https://twist.moe/a/one-punch-man/8', epNo: '8' },
-    { epSource: 'https://twist.moe/a/one-punch-man/9', epNo: '9' },
-    { epSource: 'https://twist.moe/a/one-punch-man/10', epNo: '10' },
-    { epSource: 'https://twist.moe/a/one-punch-man/11', epNo: '11' },
-    { epSource: 'https://twist.moe/a/one-punch-man/12', epNo: '12' }
   ];
+var t0 = performance.now();
 
-getEpisodeDetails(episodeArray);
+//getEpisodeDetails(episodeArray);
+getEpisodeList();
+

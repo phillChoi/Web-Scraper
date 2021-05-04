@@ -12,7 +12,7 @@
 - [X] Execute first scrape on 1 page
 - [X] Scrape the a list of details: Anime Title, Episode, Video Source
 - [X] Scrape a list of episode links
-- [ ] Push scraped data into JSON file
+- [X] Push scraped data into JSON file
 - [X] Loop scrape to do the entire series
 - [X] Seperate as module functions
 
@@ -25,6 +25,8 @@
 - puppeteer-extra
 - puppeteer-extra-plugin-stealth
 - puppeteer-extra-plugin-adblocker
+- fs
+- perf_hooks
 
 ## Disclaimer
 This project was created with the intent on learning about coding and should not be used for piracy.
