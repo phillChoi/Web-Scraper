@@ -18,8 +18,6 @@
 
 ## Additional Tasks
 - [ ] Add search functionality to find Anime based off title
-- [ ] Add support for other websites other than Twist.moe
-- [ ] Implement into website front-end maybe
 
 ## Dependencies
 - puppeteer-extra
