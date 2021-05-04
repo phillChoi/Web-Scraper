@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer-extra');
 const fs = require('fs');
 const { PerformanceObserver, performance } = require('perf_hooks');
-//const randomUseragent = require('random-useragent');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const AdBlockerPlugin = require('puppeteer-extra-plugin-adblocker');
 puppeteer.use(StealthPlugin());
