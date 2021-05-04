@@ -26,7 +26,7 @@
 - puppeteer-extra-plugin-stealth
 - puppeteer-extra-plugin-adblocker
 - fs
-- perf_hooks
+- perf_hooks (not required, just used to time the script)
 
 ## Disclaimer
 This project was created with the intent on learning about coding and should not be used for piracy.

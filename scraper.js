@@ -97,6 +97,7 @@ async function getEpisodeDetails(array){
     }
 };
 
+//Test array to test getEpisodeDetails function
 let episodeArray = [
     { epSource: 'https://twist.moe/a/one-punch-man/1', epNo: '1' },
     { epSource: 'https://twist.moe/a/one-punch-man/2', epNo: '2' },
