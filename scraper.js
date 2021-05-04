@@ -59,8 +59,7 @@ async function getEpisodeDetails(array){
         const page = await browser.newPage();
         const finalResult =[];
             //Iterate through the list of links -- does not work with forEach loop
-            for (x = 0; x<array.length;x++){
-                let link = array[x];
+            for (const link of array){
                 await page.goto(link.epSource);
                 await page.waitForTimeout(5000);
                 console.log("Now at: "+link.epSource);
@@ -103,6 +102,6 @@ let episodeArray = [
   ];
 var t0 = performance.now();
 
-//getEpisodeDetails(episodeArray);
-getEpisodeList();
+getEpisodeDetails(episodeArray);
+//getEpisodeList();
 
