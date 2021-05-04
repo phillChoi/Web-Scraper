@@ -1,7 +1,9 @@
 # Web Scraper
 
 ## Description
- Testing out and learning about Web scraping using Node and Puppeteer. 
+ Testing out and learning about Web scraping using Node and Puppeteer using Twist.moe as a real world example. 
+ 
+ ## Usage
  The code is inside scraper.js and can be run by executing in Node terminal: 
  
 ```node terminal
@@ -18,6 +20,7 @@
 
 ## Additional Tasks
 - [ ] Add search functionality to find Anime based off title
+- [ ] Maybe add in Command Line Interface support
 
 ## Dependencies
 - puppeteer-extra
