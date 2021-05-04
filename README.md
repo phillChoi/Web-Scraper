@@ -1,7 +1,7 @@
 # Web Scraper
 
 ## Description
- Testing out Webscraping using Node and Puppeteer. 
+ Testing out and learning about Web scraping using Node and Puppeteer. 
  The code is inside scraper.js and can be run by executing in Node terminal: 
  
 ```node terminal
@@ -29,4 +29,4 @@
 - perf_hooks (not required, just used to time the script)
 
 ## Disclaimer
-This project was created with the intent on learning about coding and should not be used for piracy.
+This project was created with the intent on learning about web scraping. The repository and creater have **no** affiliation with Twist.moe.
