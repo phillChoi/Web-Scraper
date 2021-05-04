@@ -7,7 +7,7 @@
  The code is inside scraper.js and can be run by executing in Node terminal: 
  
 ```node terminal
-> node scraper.js
+$ node scraper.js
 ```
 
 ## To Do List
