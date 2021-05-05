@@ -6,6 +6,20 @@ const AdBlockerPlugin = require('puppeteer-extra-plugin-adblocker');
 puppeteer.use(StealthPlugin());
 puppeteer.use(AdBlockerPlugin({ blockTrackers: true}));
 
+async function searchAnime(title){
+    try {
+        const browser = await puppeteer.launch({headless:true});
+        const page = await browser.newPage();   
+        await page.goto('https://twist.moe/');
+        await page.waitForTimeout(5000);
+
+
+
+    } catch(err){   
+        console.log(err);
+    }
+
+}
 
 async function getEpisodeList() {
     try {
@@ -102,6 +116,6 @@ let episodeArray = [
   ];
 var t0 = performance.now();
 
-getEpisodeDetails(episodeArray);
+//getEpisodeDetails(episodeArray);
 //getEpisodeList();
 
