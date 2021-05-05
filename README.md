@@ -9,9 +9,11 @@
 ```node terminal
 $ node scraper.js
 ```
-At the bottom of ```scraper.js``` just put desired function in. Currently the list of functions are: 
-- ```getEpisodeDetails()```
-- ```getEpisodeList() ```
+List of different functions inside ```scraper.js```:
+- ```searchAnime()```
+- ```getEpisodeList(URL) ```
+- ```getEpisodeDetails(array)```
+- ```clean(string)```
 
 ## To Do List
 - [X] Execute first scrape on 1 page
@@ -22,14 +24,16 @@ At the bottom of ```scraper.js``` just put desired function in. Currently the li
 - [X] Seperate as module functions
 
 ## Additional Tasks
-- [ ] Add search functionality to find Anime based off title
-- [ ] Maybe add in Command Line Interface support
+- [X] Add search functionality to find Anime based off title
+- [X] Allow user input through terminal
+- [ ] Add option to switch Twist.moe to search English titles
 
 ## Dependencies
 - puppeteer-extra
 - puppeteer-extra-plugin-stealth
 - puppeteer-extra-plugin-adblocker
 - fs
+- prompt-sync
 - perf_hooks (not required, just used to time the script)
 
 ## Disclaimer
