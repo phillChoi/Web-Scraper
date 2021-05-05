@@ -9,7 +9,7 @@
 ```node terminal
 $ node scraper.js
 ```
-The script will prompt you with questions inside the terminal and result in creating a JSON file inside of the output folder.
+The script will prompt you with questions inside the terminal and result in creating a JSON file inside of the output folder.\
 List of different functions inside ```scraper.js```:
 - ```searchAnime()```
 - ```getEpisodeList(URL) ```
