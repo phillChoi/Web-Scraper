@@ -9,6 +9,9 @@
 ```node terminal
 $ node scraper.js
 ```
+At the bottom of ```scraper.js``` just put desired function in. Currently the list of functions are: 
+- ```getEpisodeDetails()```
+- ```getEpisodeList() ```
 
 ## To Do List
 - [X] Execute first scrape on 1 page
